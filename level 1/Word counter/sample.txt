@@ -1,0 +1,6 @@
+
+This program reads a text file and counts the number of words
+contained in the file.
+
+The user enters the name or path of the text file.
+The program handles errors if the file cannot be found or read.
