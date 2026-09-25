@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ post.title }} - Cohort Tech</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .meta {
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .content {
+            line-height: 1.8;
+            white-space: pre-line;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .buttons a {
+            text-decoration: none;
+            padding: 10px 15px;
+            margin-right: 10px;
+            border-radius: 5px;
+            background: #111827;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🚀 Cohort Tech Blog</h1>
+</header>
+
+<div class="container">
+
+    <h1>{{ post.title }}</h1>
+
+    <div class="meta">
+        By {{ post.author.username }}
+        • {{ post.created_at|date:"F d, Y" }}
+    </div>
+
+    <div class="content">
+        {{ post.content }}
+    </div>
+
+    {% if user.is_staff %}
+
+        <div class="buttons">
+
+            <a href="{% url 'edit_post' post.pk %}">
+                ✏️ Edit
+            </a>
+
+            <a href="{% url 'delete_post' post.pk %}">
+                🗑️ Delete
+            </a>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
